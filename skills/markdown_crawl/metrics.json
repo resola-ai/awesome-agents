@@ -1,0 +1,30 @@
+{
+  "total_requests": 2,
+  "successful_markdown_requests": 0,
+  "failed_requests": 2,
+  "total_markdown_tokens": 0,
+  "total_html_tokens": 0,
+  "total_tokens_saved": 0,
+  "requests_history": [
+    {
+      "url": "https://example.com",
+      "timestamp": "2026-02-14T03:44:18Z",
+      "markdown_tokens": 202,
+      "html_tokens": 0,
+      "tokens_saved": 0,
+      "success": false,
+      "content_type": "",
+      "domain": "example.com"
+    },
+    {
+      "url": "https://example.com",
+      "timestamp": "2026-02-14T03:26:18Z",
+      "markdown_tokens": 202,
+      "html_tokens": 0,
+      "tokens_saved": 0,
+      "success": false,
+      "content_type": "",
+      "domain": "example.com"
+    }
+  ]
+}

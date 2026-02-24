@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "michael-claude-code-plugins",
+  "version": "1.0.0",
+  "description": "Bundled plugins for Claude Code including Agent SDK development tools, PR review toolkit, and commit workflows",
+  "owner": {
+    "name": "Anthropic",
+    "email": "v.duc@resola.ai"
+  },
+  "plugins": [
+    {
+      "name": "agentic-docs",
+      "description": "Development kit for working with the Claude Agent SDK",
+      "source": "./agentic-docs",
+      "category": "development"
+    }
+  ]
+}

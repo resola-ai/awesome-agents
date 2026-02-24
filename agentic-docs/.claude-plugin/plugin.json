@@ -1,0 +1,8 @@
+{
+  "name": "agentic-docs",
+  "version": "0.1.0",
+  "description": "Agentic document system — create, review, outline, and update Markdown and architecture docs with AI agents",
+  "author": {
+    "name": "michael"
+  }
+}
