@@ -13,6 +13,13 @@
       "description": "Development kit for working with the Claude Agent SDK",
       "source": "./agentic-docs",
       "category": "development"
+    },
+    {
+      "name": "resola-skills",
+      "description": "Collection of Resola Skills",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/make-plan", "./skills/prepare-agents-md"]
     }
   ]
 }
