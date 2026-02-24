@@ -1,5 +1,5 @@
 ---
-name: markdown_crawl
+name: markdown-crawl
 description: Fetch web content in markdown format using Cloudflare's Markdown for Agents feature. Use when fetching web pages, documentation sites, or converting HTML to markdown. Tracks metrics like token savings and usage statistics.
 disable-model-invocation: false
 metadata:

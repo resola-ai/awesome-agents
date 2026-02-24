@@ -20,7 +20,11 @@
       "source": "./",
       "category": "development",
       "strict": false,
-      "skills": ["./skills/make-plan", "./skills/prepare-agents-md"]
+      "skills": [
+        "./skills/make-plan",
+        "./skills/prepare-agents-md",
+        "./skills/markdown-crawl"
+      ]
     }
   ]
 }
