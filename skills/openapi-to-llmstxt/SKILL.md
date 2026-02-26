@@ -1,6 +1,6 @@
 ---
 name: openapi-to-llmstxt
-description: "Convert OpenAPI JSON specifications to llms.txt format. Use for: generating LLM-friendly documentation from API specs, filtering API documentation by tags, or extracting schema-only documentation for LLM context."
+description: "Convert OpenAPI JSON specifications to llms.txt format. Use for: generating LLM-friendly documentation from API specs, filtering API documentation by tags, or extracting schema-only documentation for LLM context. By default it will convert fully the entire OpenAPI spec."
 ---
 
 # OpenAPI to llms.txt Converter
@@ -10,7 +10,7 @@ This skill provides a streamlined workflow for converting complex OpenAPI (Swagg
 ## Workflow
 
 1.  **Obtain OpenAPI JSON**: Ensure you have the local path to the OpenAPI JSON file.
-2.  **Identify Requirements**: Determine if the user wants the full API, specific tags, or only the schemas.
+2.  **Identify Requirements**: Determine if the user wants the full API, specific tags, only endpoints or only the schemas.
 3.  **Run Conversion**: Use the provided script to generate the `llms.txt` file.
 
 ## Usage
