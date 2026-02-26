@@ -1,6 +1,6 @@
 ---
-name: make-plan
-description: Make a detailed plan to fix or resolve an issue/problem. Follows a 6-step workflow: understand the problem, review docs, explore the codebase, create a detailed plan, write an exec plan file, and update PLANS.md.
+name: albert
+description: Make a detailed plan to fix or resolve an issue/problem. Follows a 6-step workflow: understand the problem, review docs, explore the codebase, create a detailed plan, write an exec plan file, and update PLANS.md. use /albert to activate the skill. Or activate by phrase `albert help to plan`
 license: MIT
 metadata:
   author: v.duc

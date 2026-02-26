@@ -21,9 +21,10 @@
       "category": "development",
       "strict": false,
       "skills": [
-        "./skills/make-plan",
+        "./skills/albert",
         "./skills/prepare-agents-md",
-        "./skills/markdown-crawl"
+        "./skills/markdown-crawl",
+        "./skills/openapi-to-llmstxt"
       ]
     }
   ]
