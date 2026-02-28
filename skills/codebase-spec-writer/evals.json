@@ -1,0 +1,153 @@
+[
+  {
+    "id": "tc-01",
+    "prompt": "I have a Node.js repo at /home/user/my-app with folders: auth/, dashboard/, billing/, and api/. Can you scan the codebase and generate product spec documents for each feature?",
+    "description": "Core happy path: user provides a local repo path, expects specs for each top-level folder",
+    "assertions": [
+      {
+        "type": "contains",
+        "value": "auth",
+        "description": "Response addresses the auth module"
+      },
+      {
+        "type": "contains",
+        "value": "dashboard",
+        "description": "Response addresses the dashboard module"
+      },
+      {
+        "type": "contains",
+        "value": "billing",
+        "description": "Response addresses the billing module"
+      },
+      {
+        "type": "llm_judge",
+        "value": "The response either uses MCP tools to scan the codebase OR explicitly asks for the repo path/access. It does not just make up specs from thin air.",
+        "description": "Claude uses tools or asks for access rather than hallucinating"
+      },
+      {
+        "type": "llm_judge",
+        "value": "The response mentions generating one spec file per feature/module (not one big combined file).",
+        "description": "Correct output format — one file per feature"
+      }
+    ]
+  },
+  {
+    "id": "tc-02",
+    "prompt": "Document the features of this GitHub repo: https://github.com/expressjs/express",
+    "description": "GitHub repo URL provided — should use GitHub MCP to explore",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response uses the GitHub MCP tool to explore the repo structure, OR explains it will do so. It does not fabricate the folder structure from memory.",
+        "description": "Uses GitHub MCP for remote repo"
+      },
+      {
+        "type": "llm_judge",
+        "value": "The response identifies top-level folders of the Express repo and maps them to features. Common Express folders include lib/, test/, examples/.",
+        "description": "Correctly maps folder structure to features"
+      }
+    ]
+  },
+  {
+    "id": "tc-03",
+    "prompt": "Generate product specs for my codebase. The repo is at /projects/saas-app. Skip node_modules and the dist folder.",
+    "description": "User explicitly asks to skip certain folders — skill should respect this",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response does NOT generate specs for node_modules or dist folders.",
+        "description": "Infrastructure folders are correctly skipped"
+      },
+      {
+        "type": "llm_judge",
+        "value": "The response scans /projects/saas-app using available filesystem or code intelligence tools.",
+        "description": "Uses tools to explore the given path"
+      }
+    ]
+  },
+  {
+    "id": "tc-04",
+    "prompt": "Write a product specification document for the auth module in my codebase at /repos/backend",
+    "description": "Single feature specified — should generate just one spec",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response focuses on generating a spec for the auth module specifically, not all modules.",
+        "description": "Scopes to the requested single feature"
+      },
+      {
+        "type": "llm_judge",
+        "value": "The generated spec includes most of these sections: Overview, User Stories, Core Functionality, Technical Implementation, and API/Interface.",
+        "description": "Spec follows the required template structure"
+      }
+    ]
+  },
+  {
+    "id": "tc-05",
+    "prompt": "My Python Django project is at ~/work/crm. It has these top-level apps: contacts, deals, tasks, reports, and integrations. Generate spec docs for each.",
+    "description": "Python/Django project — language-specific terminology should adapt",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response uses Django-appropriate terminology: 'views', 'models', 'urls', 'serializers' rather than generic terms.",
+        "description": "Adapts to Django framework terminology"
+      },
+      {
+        "type": "llm_judge",
+        "value": "Specs are generated for all 5 apps: contacts, deals, tasks, reports, integrations.",
+        "description": "All 5 modules are covered"
+      },
+      {
+        "type": "llm_judge",
+        "value": "Output files are named in the format [feature]-spec.md, e.g. contacts-spec.md",
+        "description": "Correct file naming convention"
+      }
+    ]
+  },
+  {
+    "id": "tc-06",
+    "prompt": "Reverse engineer the documentation for my repo. I want to understand what each part does from a product perspective.",
+    "description": "Trigger test — vague phrasing, no explicit 'spec' mention. Skill should still trigger.",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response recognizes this as a request to generate product specs and applies the codebase-spec-writer workflow. It asks for the repo path if not provided.",
+        "description": "Skill triggers correctly on implicit/vague phrasing"
+      }
+    ]
+  },
+  {
+    "id": "tc-07",
+    "prompt": "Scan my codebase and generate feature specs. The root is /app. Some folders like config/, scripts/, and .github/ should probably be ignored — use your judgment.",
+    "description": "User defers to Claude's judgment on what to include/exclude",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response correctly excludes config/, scripts/, and .github/ from feature specs (or flags them as infrastructure rather than product features).",
+        "description": "Infrastructure folders excluded via judgment"
+      },
+      {
+        "type": "llm_judge",
+        "value": "Before generating all specs, the response presents a list of detected features to the user for confirmation.",
+        "description": "User is shown feature list before spec generation begins"
+      }
+    ]
+  },
+  {
+    "id": "tc-08",
+    "prompt": "Generate specs for this flat repo. All files are at root — there are no subfolders. Files include: user.py, product.py, order.py, payment.py, email.py",
+    "description": "Edge case: flat codebase with no subfolders — skill should group by file naming",
+    "assertions": [
+      {
+        "type": "llm_judge",
+        "value": "The response handles the flat structure gracefully, grouping or treating each major file as a feature rather than erroring or requiring subfolders.",
+        "description": "Handles flat codebase without subfolders"
+      },
+      {
+        "type": "llm_judge",
+        "value": "The response generates specs for the logical features represented by the files: User, Product, Order, Payment, Email.",
+        "description": "Features correctly identified from flat file structure"
+      }
+    ]
+  }
+]

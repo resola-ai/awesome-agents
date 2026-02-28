@@ -24,7 +24,8 @@
         "./skills/albert",
         "./skills/prepare-agents-md",
         "./skills/markdown-crawl",
-        "./skills/openapi-to-llmstxt"
+        "./skills/openapi-to-llmstxt",
+        "./skills/codebase-spec-writer"
       ]
     }
   ]
