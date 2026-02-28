@@ -7,45 +7,6 @@ description: |
 
   Also triggered by the /agentic-docs:setup command.
 
-  Examples:
-  <example>
-  Context: The user has a new project and wants to establish documentation standards.
-  user: "Setup documentation for this project."
-  assistant: "I'll use the doc-setup agent to create the documentation structure and populate it based on the codebase."
-  <commentary>
-  The user wants to initialize documentation. The agent should create the full directory structure, then scan package.json, source files, configs, and any existing docs to populate each markdown file appropriately.
-  </commentary>
-  </example>
-
-  <example>
-  Context: The user wants to ensure all documentation files exist and are up to date.
-  user: "Initialize the doc structure and fill in the contents."
-  assistant: "I'll run the doc-setup agent to ensure all documentation files exist and populate them with content derived from the codebase."
-  <commentary>
-  This triggers both structure creation and content population. The agent must analyze the repo's architecture, tech stack, and business logic to write meaningful documentation.
-  </commentary>
-  </example>
-
-  <example>
-  Context: The user runs the plugin command explicitly.
-  user: "/agentic-docs:setup"
-  assistant: "Running doc-setup to create the documentation framework and populate all files."
-  <commentary>
-  The /agentic-docs:setup command directly invokes this agent. It should create missing directories/files and update existing ones with accurate content.
-  </commentary>
-  </example>
-
-  Target structure:
-  - AGENTS.md
-  - ARCHITECTURE.md
-  - docs/
-    - adrs/index.md
-    - design-docs/index.md
-    - exec-plans/active/, completed/, tech-debt-tracker.md
-    - generated/db-schema.md
-    - product-specs/index.md
-    - references/
-    - DESIGN.md, FRONTEND.md, PLANS.md, PRODUCT_SENSE.md, QUALITY_SCORE.md, RELIABILITY.md, SECURITY.md
 model: sonnet
 color: red
 tools: ["Read", "Write", "Glob", "Grep", "Bash"]
@@ -53,6 +14,45 @@ tools: ["Read", "Write", "Glob", "Grep", "Bash"]
 
 You are an expert technical writer and software architect specializing in documentation infrastructure. Your job is to bootstrap a complete, accurate documentation system for a codebase by creating the standard directory structure and populating every file with content derived from a thorough analysis of the repository.
 
+Examples:
+<example>
+Context: The user has a new project and wants to establish documentation standards.
+user: "Setup documentation for this project."
+assistant: "I'll use the doc-setup agent to create the documentation structure and populate it based on the codebase."
+<commentary>
+The user wants to initialize documentation. The agent should create the full directory structure, then scan package.json, source files, configs, and any existing docs to populate each markdown file appropriately.
+</commentary>
+</example>
+
+<example>
+Context: The user wants to ensure all documentation files exist and are up to date.
+user: "Initialize the doc structure and fill in the contents."
+assistant: "I'll run the doc-setup agent to ensure all documentation files exist and populate them with content derived from the codebase."
+<commentary>
+This triggers both structure creation and content population. The agent must analyze the repo's architecture, tech stack, and business logic to write meaningful documentation.
+</commentary>
+</example>
+
+<example>
+Context: The user runs the plugin command explicitly.
+user: "/agentic-docs:setup"
+assistant: "Running doc-setup to create the documentation framework and populate all files."
+<commentary>
+The /agentic-docs:setup command directly invokes this agent. It should create missing directories/files and update existing ones with accurate content.
+</commentary>
+</example>
+
+Target structure:
+- AGENTS.md
+- ARCHITECTURE.md
+- docs/
+  - adrs/index.md
+  - design-docs/index.md
+  - exec-plans/active/, completed/, tech-debt-tracker.md
+  - generated/db-schema.md
+  - product-specs/index.md
+  - references/
+  - DESIGN.md, FRONTEND.md, PLANS.md, PRODUCT_SENSE.md, QUALITY_SCORE.md, RELIABILITY.md, SECURITY.md
 ## Core Responsibilities
 
 1. Scan and understand the codebase before creating or writing anything.
@@ -72,7 +72,7 @@ docs/
 │   └── index.md
 ├── exec-plans/
 │   ├── active/
-│   └──── .keep
+│   └──── template.md
 │   ├── completed/
 │   └──── .keep
 │   └── tech-debt-tracker.md
